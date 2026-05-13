@@ -1,0 +1,553 @@
+[
+  {
+    "screenId": "8ec909579a9b4f158f90735fac266ce5",
+    "screenTitle": "Pause Overlay - Tetris Supervisor",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Resume",
+        "line": 198
+      },
+      {
+        "type": "button",
+        "label": "Restart",
+        "line": 205
+      },
+      {
+        "type": "button",
+        "label": "Main Menu",
+        "line": 210
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Resume",
+        "line": 198
+      },
+      {
+        "type": "button",
+        "label": "Restart",
+        "line": 205
+      },
+      {
+        "type": "button",
+        "label": "Main Menu",
+        "line": 210
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 3,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "3d24fa626331491696b81d82b80d4ab3",
+    "screenTitle": "Main Menu - Tetris Supervisor",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "New Game",
+        "line": 136
+      },
+      {
+        "type": "button",
+        "label": "Controls",
+        "line": 141
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 145
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "New Game",
+        "line": 136
+      },
+      {
+        "type": "button",
+        "label": "Controls",
+        "line": 141
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 145
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 3,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "0d0190307aa8493ab760917887623268",
+    "screenTitle": "Game Over - Tetris Supervisor",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Play Again",
+        "line": 201
+      },
+      {
+        "type": "button",
+        "label": "Return to",
+        "line": 206
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Play Again",
+        "line": 201
+      },
+      {
+        "type": "button",
+        "label": "Return to",
+        "line": 206
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 2,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "ad0f29c2d78c4b39a64ed492b308aa0c",
+    "screenTitle": "Game Board - Tetris Supervisor",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "dashboard",
+        "href": "#",
+        "line": 191
+      },
+      {
+        "type": "link",
+        "label": "Training",
+        "href": "#",
+        "line": 197
+      },
+      {
+        "type": "link",
+        "label": "history",
+        "href": "#",
+        "line": 203
+      },
+      {
+        "type": "link",
+        "label": "Social",
+        "href": "#",
+        "line": 209
+      },
+      {
+        "type": "link",
+        "label": "Support",
+        "href": "#",
+        "line": 215
+      },
+      {
+        "type": "link",
+        "label": "Play",
+        "href": "#",
+        "line": 327
+      },
+      {
+        "type": "link",
+        "label": "Stats",
+        "href": "#",
+        "line": 331
+      },
+      {
+        "type": "link",
+        "label": "leaderboard",
+        "href": "#",
+        "line": 335
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 339
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 175
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 178
+      },
+      {
+        "type": "button",
+        "label": "pause",
+        "line": 346
+      },
+      {
+        "type": "button",
+        "label": "Restart",
+        "line": 350
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "dashboard",
+        "href": "#",
+        "line": 191
+      },
+      {
+        "type": "link",
+        "label": "Training",
+        "href": "#",
+        "line": 197
+      },
+      {
+        "type": "link",
+        "label": "history",
+        "href": "#",
+        "line": 203
+      },
+      {
+        "type": "link",
+        "label": "Social",
+        "href": "#",
+        "line": 209
+      },
+      {
+        "type": "link",
+        "label": "Support",
+        "href": "#",
+        "line": 215
+      },
+      {
+        "type": "link",
+        "label": "Play",
+        "href": "#",
+        "line": 327
+      },
+      {
+        "type": "link",
+        "label": "Stats",
+        "href": "#",
+        "line": 331
+      },
+      {
+        "type": "link",
+        "label": "leaderboard",
+        "href": "#",
+        "line": 335
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 339
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 175
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 178
+      },
+      {
+        "type": "button",
+        "label": "pause",
+        "line": 346
+      },
+      {
+        "type": "button",
+        "label": "Restart",
+        "line": 350
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 13,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "55965f6df3cd49ee9a7b8552ba7f4b39",
+    "screenTitle": "Game Options - Tetris Supervisor",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "dashboard",
+        "href": "#",
+        "line": 133
+      },
+      {
+        "type": "link",
+        "label": "Training",
+        "href": "#",
+        "line": 137
+      },
+      {
+        "type": "link",
+        "label": "history",
+        "href": "#",
+        "line": 141
+      },
+      {
+        "type": "link",
+        "label": "Social",
+        "href": "#",
+        "line": 145
+      },
+      {
+        "type": "link",
+        "label": "Support",
+        "href": "#",
+        "line": 149
+      },
+      {
+        "type": "link",
+        "label": "Play",
+        "href": "#",
+        "line": 253
+      },
+      {
+        "type": "link",
+        "label": "Stats",
+        "href": "#",
+        "line": 257
+      },
+      {
+        "type": "link",
+        "label": "leaderboard",
+        "href": "#",
+        "line": 261
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 265
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 118
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 121
+      },
+      {
+        "type": "button",
+        "label": "Reset to Defaults",
+        "line": 243
+      },
+      {
+        "type": "button",
+        "label": "Save &amp; Close",
+        "line": 246
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 170
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 178
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 192
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 200
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 219
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 235
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "dashboard",
+        "href": "#",
+        "line": 133
+      },
+      {
+        "type": "link",
+        "label": "Training",
+        "href": "#",
+        "line": 137
+      },
+      {
+        "type": "link",
+        "label": "history",
+        "href": "#",
+        "line": 141
+      },
+      {
+        "type": "link",
+        "label": "Social",
+        "href": "#",
+        "line": 145
+      },
+      {
+        "type": "link",
+        "label": "Support",
+        "href": "#",
+        "line": 149
+      },
+      {
+        "type": "link",
+        "label": "Play",
+        "href": "#",
+        "line": 253
+      },
+      {
+        "type": "link",
+        "label": "Stats",
+        "href": "#",
+        "line": 257
+      },
+      {
+        "type": "link",
+        "label": "leaderboard",
+        "href": "#",
+        "line": 261
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 265
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 118
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 121
+      },
+      {
+        "type": "button",
+        "label": "Reset to Defaults",
+        "line": 243
+      },
+      {
+        "type": "button",
+        "label": "Save &amp; Close",
+        "line": 246
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 170
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 178
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 192
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 200
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 219
+      },
+      {
+        "type": "input",
+        "label": "checkbox",
+        "inputType": "checkbox",
+        "line": 235
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 19,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "94b8934ef61e48e494a1316de2664cf7",
+    "screenTitle": "Controls Help - Tetris Supervisor",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Back",
+        "line": 122
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Back",
+        "line": 122
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 1,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
