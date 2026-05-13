@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tetris Supervisor - Game Over</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#0e1416",
+                        "surface-container-low": "#171d1e",
+                        "primary": "#4cd7f6",
+                        "primary-fixed-dim": "#4cd7f6",
+                        "on-surface-variant": "#bcc9cd",
+                        "tertiary-fixed": "#ffdcbf",
+                        "on-error": "#690005",
+                        "primary-container": "#06b6d4",
+                        "surface": "#0e1416",
+                        "surface-container-highest": "#303638",
+                        "tertiary": "#ffb873",
+                        "on-tertiary": "#4b2800",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#090f11",
+                        "on-tertiary-fixed-variant": "#6a3b00",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#2c0051",
+                        "inverse-surface": "#dee3e6",
+                        "background": "#0e1416",
+                        "secondary-fixed": "#f0dbff",
+                        "surface-bright": "#343a3c",
+                        "surface-variant": "#303638",
+                        "secondary-fixed-dim": "#ddb7ff",
+                        "surface-tint": "#4cd7f6",
+                        "on-secondary-container": "#d6a9ff",
+                        "outline-variant": "#3d494c",
+                        "on-tertiary-container": "#5b3200",
+                        "on-surface": "#dee3e6",
+                        "on-primary": "#003640",
+                        "tertiary-container": "#e89337",
+                        "secondary-container": "#6f00be",
+                        "primary-fixed": "#acedff",
+                        "on-tertiary-fixed": "#2d1600",
+                        "on-primary-fixed": "#001f26",
+                        "on-primary-fixed-variant": "#004e5c",
+                        "on-background": "#dee3e6",
+                        "outline": "#869397",
+                        "inverse-on-surface": "#2b3133",
+                        "inverse-primary": "#00687a",
+                        "error-container": "#93000a",
+                        "surface-container": "#1b2122",
+                        "on-secondary": "#490080",
+                        "tertiary-fixed-dim": "#ffb873",
+                        "surface-container-high": "#252b2d",
+                        "on-primary-container": "#00424f",
+                        "secondary": "#ddb7ff",
+                        "on-secondary-fixed-variant": "#6900b3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xl": "48px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "safe-area": "24px",
+                        "touch-target-min": "44px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "hud-label": [
+                            "JetBrains Mono"
+                        ],
+                        "button-text": [
+                            "Hanken Grotesk"
+                        ],
+                        "body-base": [
+                            "Hanken Grotesk"
+                        ],
+                        "hud-value": [
+                            "JetBrains Mono"
+                        ],
+                        "headline-md": [
+                            "Hanken Grotesk"
+                        ],
+                        "display-lg": [
+                            "Hanken Grotesk"
+                        ]
+                    },
+                    "fontSize": {
+                        "hud-label": [
+                            "12px",
+                            {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.1em",
+                                "fontWeight": "500"
+                            }
+                        ],
+                        "button-text": [
+                            "14px",
+                            {
+                                "lineHeight": "1",
+                                "letterSpacing": "0.02em",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "body-base": [
+                            "16px",
+                            {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "hud-value": [
+                            "20px",
+                            {
+                                "lineHeight": "24px",
+                                "fontWeight": "700"
+                            }
+                        ],
+                        "headline-md": [
+                            "24px",
+                            {
+                                "lineHeight": "1.2",
+                                "fontWeight": "700"
+                            }
+                        ],
+                        "display-lg": [
+                            "48px",
+                            {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "800"
+                            }
+                        ]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .neon-glow {
+            filter: drop-shadow(0 0 10px rgba(76, 215, 246, 0.4));
+        }
+        .error-glow {
+            text-shadow: 0 0 15px rgba(244, 63, 94, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center p-md">
+<!-- Nav Shell Suppressed due to "Transactional/Success/Game Over" state -->
+<main class="w-full max-w-md mx-auto flex flex-col items-center gap-xl">
+<!-- Game Over Header -->
+<div class="text-center space-y-sm">
+<h1 class="text-display-lg font-display-lg text-[#F43F5E] error-glow uppercase tracking-tighter">GAME OVER</h1>
+<p class="text-body-base font-body-base text-on-surface-variant">Supervisor intervention required.</p>
+</div>
+<!-- High Score Chip -->
+<div class="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-full flex items-center gap-2 border border-tertiary-fixed">
+<span class="material-symbols-outlined text-[18px]">trophy</span>
+<span class="text-button-text font-button-text">NEW HIGH SCORE</span>
+</div>
+<!-- Stats Summary Bento Grid -->
+<div class="w-full grid grid-cols-2 gap-sm">
+<!-- Final Score -->
+<div class="col-span-2 bg-surface-container-low border-t border-primary rounded px-md py-sm flex flex-col gap-xs neon-glow">
+<span class="text-hud-label font-hud-label text-primary">FINAL SCORE</span>
+<span class="text-display-lg font-display-lg text-on-surface">1,459,200</span>
+</div>
+<!-- Lines Cleared -->
+<div class="col-span-1 bg-surface-container border-t border-primary rounded px-md py-sm flex flex-col gap-xs">
+<span class="text-hud-label font-hud-label text-primary">LINES</span>
+<span class="text-hud-value font-hud-value text-on-surface">142</span>
+</div>
+<!-- Level Reached -->
+<div class="col-span-1 bg-surface-container border-t border-primary rounded px-md py-sm flex flex-col gap-xs">
+<span class="text-hud-label font-hud-label text-primary">LEVEL</span>
+<span class="text-hud-value font-hud-value text-on-surface">15</span>
+</div>
+<!-- Time Elapsed -->
+<div class="col-span-2 bg-surface-container border-t border-primary rounded px-md py-sm flex flex-col gap-xs items-center justify-center">
+<span class="text-hud-label font-hud-label text-primary">TIME ELAPSED</span>
+<span class="text-hud-value font-hud-value text-on-surface">12:45.33</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="w-full flex flex-col gap-sm mt-md">
+<!-- Primary Action -->
+<button class="w-full min-h-touch-target-min bg-surface text-primary border border-primary hover:neon-glow transition-all rounded flex items-center justify-center gap-sm group">
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform duration-300">replay</span>
+<span class="text-button-text font-button-text">Play Again</span>
+</button>
+<!-- Secondary Action -->
+<button class="w-full min-h-touch-target-min bg-surface text-on-surface border border-outline-variant hover:border-primary transition-colors rounded flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">menu</span>
+<span class="text-button-text font-button-text">Return to Menu</span>
+</button>
+</div>
+</main>
+</body></html>

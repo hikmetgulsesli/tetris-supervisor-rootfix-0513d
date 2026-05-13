@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tetris Supervisor - Paused</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#0e1416",
+                        "surface-container-low": "#171d1e",
+                        "primary": "#4cd7f6",
+                        "primary-fixed-dim": "#4cd7f6",
+                        "on-surface-variant": "#bcc9cd",
+                        "tertiary-fixed": "#ffdcbf",
+                        "on-error": "#690005",
+                        "primary-container": "#06b6d4",
+                        "surface": "#0e1416",
+                        "surface-container-highest": "#303638",
+                        "tertiary": "#ffb873",
+                        "on-tertiary": "#4b2800",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#090f11",
+                        "on-tertiary-fixed-variant": "#6a3b00",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#2c0051",
+                        "inverse-surface": "#dee3e6",
+                        "background": "#0e1416",
+                        "secondary-fixed": "#f0dbff",
+                        "surface-bright": "#343a3c",
+                        "surface-variant": "#303638",
+                        "secondary-fixed-dim": "#ddb7ff",
+                        "surface-tint": "#4cd7f6",
+                        "on-secondary-container": "#d6a9ff",
+                        "outline-variant": "#3d494c",
+                        "on-tertiary-container": "#5b3200",
+                        "on-surface": "#dee3e6",
+                        "on-primary": "#003640",
+                        "tertiary-container": "#e89337",
+                        "secondary-container": "#6f00be",
+                        "primary-fixed": "#acedff",
+                        "on-tertiary-fixed": "#2d1600",
+                        "on-primary-fixed": "#001f26",
+                        "on-primary-fixed-variant": "#004e5c",
+                        "on-background": "#dee3e6",
+                        "outline": "#869397",
+                        "inverse-on-surface": "#2b3133",
+                        "inverse-primary": "#00687a",
+                        "error-container": "#93000a",
+                        "surface-container": "#1b2122",
+                        "on-secondary": "#490080",
+                        "tertiary-fixed-dim": "#ffb873",
+                        "surface-container-high": "#252b2d",
+                        "on-primary-container": "#00424f",
+                        "secondary": "#ddb7ff",
+                        "on-secondary-fixed-variant": "#6900b3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xl": "48px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "safe-area": "24px",
+                        "touch-target-min": "44px",
+                        "gutter": "16px",
+                        "unit": "4px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "hud-label": ["JetBrains Mono"],
+                        "button-text": ["Hanken Grotesk"],
+                        "body-base": ["Hanken Grotesk"],
+                        "hud-value": ["JetBrains Mono"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "hud-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "button-text": ["14px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-base": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "hud-value": ["20px", { "lineHeight": "24px", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Neon Bloom utility for active states */
+        .neon-bloom-primary {
+            box-shadow: 0 0 15px rgba(76, 215, 246, 0.4);
+        }
+        /* Custom grid background for the playfield to simulate the 10x20 board */
+        .tetris-grid {
+            background-image: 
+                linear-gradient(to right, #3d494c 1px, transparent 1px),
+                linear-gradient(to bottom, #3d494c 1px, transparent 1px);
+            background-size: 10% 5%; /* 10 cols, 20 rows roughly */
+            background-position: top left;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen w-full flex items-center justify-center overflow-hidden font-body-base antialiased selection:bg-primary/30 selection:text-primary">
+<!-- FAUX BACKGROUND: Dimmed & Blurred Game Board Context -->
+<!-- This provides the "dimmed score" and contextual background requested -->
+<div class="absolute inset-0 z-0 flex justify-center items-center opacity-25 blur-[6px] pointer-events-none scale-105 transition-all duration-300">
+<!-- 3-Column Desktop Grid Setup -->
+<div class="flex gap-lg h-[819px] max-h-[800px] w-full max-w-4xl px-md">
+<!-- Left Column: Hold & Stats -->
+<div class="hidden md:flex flex-col gap-md w-32 shrink-0">
+<!-- HUD Module: HOLD -->
+<div class="bg-surface-container border-t border-primary p-sm min-h-[120px]">
+<h3 class="font-hud-label text-hud-label text-on-surface-variant uppercase">Hold</h3>
+<div class="mt-sm h-16 w-full bg-surface-variant rounded flex items-center justify-center">
+<!-- Faux block shape -->
+<div class="w-8 h-8 bg-tertiary rounded-sm opacity-50"></div>
+</div>
+</div>
+<!-- Spacer -->
+<div class="flex-grow"></div>
+<!-- HUD Module: SCORE -->
+<div class="bg-surface-container border-t border-primary p-sm">
+<h3 class="font-hud-label text-hud-label text-on-surface-variant uppercase">Score</h3>
+<p class="font-hud-value text-hud-value text-primary mt-xs text-right tracking-tight">042,950</p>
+</div>
+<!-- HUD Module: LEVEL -->
+<div class="bg-surface-container border-t border-primary p-sm">
+<h3 class="font-hud-label text-hud-label text-on-surface-variant uppercase">Level</h3>
+<p class="font-hud-value text-hud-value text-on-surface mt-xs text-right">12</p>
+</div>
+</div>
+<!-- Center Column: Playfield -->
+<div class="flex-grow max-w-[400px] mx-auto bg-surface border-2 border-outline-variant relative overflow-hidden flex flex-col justify-end">
+<div class="absolute inset-0 tetris-grid opacity-30"></div>
+<!-- Faux blocks at bottom of well -->
+<div class="w-full h-[30%] bg-surface-container-highest border-t border-outline relative z-10">
+<div class="absolute bottom-0 left-[10%] w-[20%] h-[20%] bg-primary opacity-60"></div>
+<div class="absolute bottom-0 right-[20%] w-[30%] h-[40%] bg-secondary opacity-60"></div>
+<div class="absolute bottom-[20%] left-[30%] w-[40%] h-[20%] bg-tertiary opacity-60"></div>
+</div>
+<!-- Faux falling block -->
+<div class="absolute top-[30%] left-[40%] w-[20%] h-[10%] border-2 border-primary bg-primary/20 neon-bloom-primary z-20"></div>
+</div>
+<!-- Right Column: Next Queue -->
+<div class="hidden md:flex flex-col gap-md w-32 shrink-0">
+<!-- HUD Module: NEXT -->
+<div class="bg-surface-container border-t border-primary p-sm h-[300px]">
+<h3 class="font-hud-label text-hud-label text-on-surface-variant uppercase">Next</h3>
+<div class="flex flex-col gap-sm mt-sm">
+<div class="h-16 w-full bg-surface-variant rounded flex items-center justify-center">
+<div class="w-12 h-4 bg-primary rounded-sm opacity-50"></div>
+</div>
+<div class="h-12 w-full bg-surface-dim rounded flex items-center justify-center">
+<div class="w-8 h-8 bg-secondary rounded-sm opacity-30"></div>
+</div>
+<div class="h-12 w-full bg-surface-dim rounded flex items-center justify-center">
+<div class="w-8 h-8 bg-error rounded-sm opacity-30"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- PAUSE OVERLAY (Foreground) -->
+<!-- Full screen backdrop with heavy tint and slight blur -->
+<div class="absolute inset-0 z-50 bg-background/85 backdrop-blur-sm flex flex-col items-center justify-center px-gutter">
+<!-- Centered Modal Container -->
+<div class="w-full max-w-sm flex flex-col items-center">
+<!-- Title -->
+<div class="mb-xl text-center">
+<h1 class="font-display-lg text-display-lg text-primary tracking-widest uppercase drop-shadow-[0_0_12px_rgba(76,215,246,0.5)]">
+                    Paused
+                </h1>
+<div class="h-1 w-24 bg-primary mx-auto mt-xs neon-bloom-primary rounded-full"></div>
+</div>
+<!-- Action Buttons Menu -->
+<div class="flex flex-col gap-sm w-full">
+<!-- Large Primary 'Resume' Button -->
+<button class="group relative flex items-center justify-center h-14 bg-surface border border-primary text-primary font-button-text text-button-text uppercase tracking-widest rounded-DEFAULT overflow-hidden transition-all duration-200 hover:bg-primary/10 hover:scale-[1.02] active:scale-[0.98] neon-bloom-primary mb-md">
+<span class="material-symbols-outlined mr-sm text-xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                    Resume
+                    <!-- Interaction highlight -->
+<div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors pointer-events-none"></div>
+</button>
+<!-- Secondary 'Restart' Button -->
+<button class="flex items-center justify-center h-touch-target-min bg-surface-container-low border border-outline-variant text-on-surface font-button-text text-button-text uppercase tracking-widest rounded-DEFAULT transition-all duration-200 hover:bg-surface-bright hover:border-outline hover:text-white active:scale-[0.98]">
+<span class="material-symbols-outlined mr-sm text-lg">restart_alt</span>
+                    Restart
+                </button>
+<!-- Secondary 'Main Menu' Button -->
+<button class="flex items-center justify-center h-touch-target-min bg-surface-container-low border border-outline-variant text-on-surface font-button-text text-button-text uppercase tracking-widest rounded-DEFAULT transition-all duration-200 hover:bg-surface-bright hover:border-outline hover:text-white active:scale-[0.98]">
+<span class="material-symbols-outlined mr-sm text-lg">home</span>
+                    Main Menu
+                </button>
+</div>
+<!-- Quick Stats (Optional context while paused) -->
+<div class="mt-xl pt-lg border-t border-outline-variant w-full flex justify-between px-md opacity-60">
+<div class="flex flex-col items-start">
+<span class="font-hud-label text-hud-label text-on-surface-variant">CURRENT SCORE</span>
+<span class="font-hud-value text-hud-value text-on-surface">042,950</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-hud-label text-hud-label text-on-surface-variant">TIME PLAYED</span>
+<span class="font-hud-value text-hud-value text-on-surface">12:45</span>
+</div>
+</div>
+</div>
+</div>
+</body></html>
